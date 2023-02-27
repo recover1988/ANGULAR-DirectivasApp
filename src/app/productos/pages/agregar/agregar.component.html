@@ -1,4 +1,4 @@
-<h1 class="mt-5">Agregar Producto</h1>
+<h1 class="mt-5">Agregar Producto {{ texto1 }}</h1>
 <hr />
 
 <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
@@ -13,15 +13,19 @@
       <span
         *ngIf="tieneError('nombre')"
         error-msg
-        color="blue"
-        mensaje="Debe de ingresar este campo"
+        [color]="color"
+        [mensaje]="texto1"
         [modificar]="true"
       ></span>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col">
-      <button class="btn btn-primary" type="submit">Guardar</button>
+      <button class="btn btn-primary" (click)="cambiarTexto()">Guardar</button>
+      &nbsp;
+      <button class="btn btn-primary" (click)="cambiarColor()">
+        Cambiar Color
+      </button>
     </div>
   </div>
 </form>
