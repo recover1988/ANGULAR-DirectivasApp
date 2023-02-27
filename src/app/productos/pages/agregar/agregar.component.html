@@ -10,7 +10,11 @@
       <input class="form-control" formControlName="nombre" />
     </div>
     <div class="col-auto">
-      <span class="form-text" *ngIf="tieneError('nombre')" error-msg
+      <span
+        class="form-text"
+        *ngIf="tieneError('nombre')"
+        error-msg
+        color="blue"
         >Este campo es requerido</span
       >
     </div>
@@ -22,7 +26,7 @@
   </div>
 </form>
 
-<h3 class="mt-5">Formulario</h3>
+<h3 class="mt-5" error-msg color="yellow">Formulario</h3>
 <span class="badge text-bg-primary">Valid: </span>
 <span>{{ miFormulario.valid }}</span>
 <br />
