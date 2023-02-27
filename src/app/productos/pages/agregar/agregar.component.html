@@ -11,12 +11,12 @@
     </div>
     <div class="col-auto">
       <span
-        class="form-text"
         *ngIf="tieneError('nombre')"
         error-msg
         color="blue"
-        >Este campo es requerido</span
-      >
+        mensaje="Debe de ingresar este campo"
+        [modificar]="true"
+      ></span>
     </div>
   </div>
   <div class="row mt-3">
