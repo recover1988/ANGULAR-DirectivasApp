@@ -1,5 +1,64 @@
 # DirectivasApp
 
+## Que es una Directiva?
+Las Directivas extienden la funcionalidad del HTML usando para ello una nueva sintaxis. Con ella podemos usar lógica que será ejecutada en el DOM (Document Object Model).
+Se dividen en tres tipos diferentes:
+- Directivas de Atributo
+- Directivas estructurales
+- Componentes
+### Directivas de Artibuto
+Alteran la apariencia o comportamiento de un elemento del DOM y son usados como atributos de los elementos.Entre la directivas de atributo, encontramos:
+- `ngModel`: Implementa binding
+- `ngClass`: permite añadir/eliminar varias clases
+- `ngStyle`: permite asignar estilos inline
+
+### Directivas Estructurales
+Alteran la estructura del DOM, agregando, eliminando y manipulando los elementos host a los que están unidos. Algunas directivas estructurales tienen un asterisco (*), que precede al nombre del atributo de la directiva.
+
+En las directivas estructurales podemos encontrar las siguientes:
+
+`*ngIf`: Nos permite incluir condicionales de lógica en nuestro código, como por ejemplo evaluar sentencias, hacer comparaciones, mostrar u ocultar secciones de código, y entre las muchas condiciones que deseemos crear, para que se renderice nuestro HTML, cumpliendo la sentencia a evaluar. Con el *ngIf, podemos evaluar sentencias con un simple If, podemos evaluar el else, para que no cumpliéndose la primera condición que se evalúa nuestro código ejecute otra acción en el caso contrario y podemos además incluir el then, para que cumpliendose la condición afirmativa (if), podamos añadir más flexibilidad a nuestro código incluyéndole un camino afirmativo adicional.
+
+`*ngFor`: Permite ejecutar bucles, los bucles son los que conocemos en lógica de programación como: for, while, foreach, etc. Con esta directiva estructural podemos evaluar de acuerdo a nuestra condición n veces.
+
+`ngSwitch`: esta directiva es similar al *ngIf, y es como el switch en lógica de programación. En esta directiva se pueden crear los diferentes casos que deseamos evaluar y cuando se cumple la condición esperada, oculta/muestra el HTML. Nos permite mantener nuestro código más limpio, si necesitamos evaluar varias sentencias.
+
+`ngPlural`: es una directiva que permite agregar o remover elementos del DOM, basado en un valor númerico. Para usar esta directiva, se debe proporcionar un elemento contenedor que establezca el atributo `[ngPlural]` en una expresión de cambio. Los elementos internos con un `[ngPluralCase]` ​​se mostrarán en función de su expresión. Si `[ngPluralCase]` ​​se establece en una expresión (que comience con = o ‘>’ o ‘<’ etc.), el elemento se mostrará, si el valor es igual a la expresión.
+Para mostrar valores por defecto se puede usar el string “other”.
+
+`ngTemplate`: esta directiva como su nombre lo indica es un template en Angular. El contenido de esta etiqueta puede reutilizarse en otros templates. Dentro de la etiqueta ng-template tenemos acceso a las mismas variables de contexto que son visibles en el template exterior, como por ejemplo la variable ‘noSuperHeroes’. Esto se debe a que las instancias de ng-template tienen acceso al mismo contexto en el cual están integradas. Además cada template también puede definir su set de variables.
+
+`ngComponentOutlet`: nos permite crear componentes dinámicos.
+
+### Directivas de Componente
+Las Directivas de Componente son directivas con un Template. Los componentes tienen decoradores “@Component”, el componente es un decorador @Directive que es extendido con características propias de los templates.
+
+## Crear Nueva Directiva
+
+En el cmd tenenmos que escribir el comando:
+
+```
+ng g d [nombre de la directiva] --skip-tests
+```
+
+Y se genera el siguiente archivo:
+
+```
+import { Directive } from '@angular/core';
+
+@Directive({
+  selector: '[appErrorMsg]'
+})
+export class ErrorMsgDirective {
+
+  constructor() { }
+
+}
+
+```
+
+Si queremos usar la directiva en otro componente tenemos que exportarlo y luego importarlo desde el modulo.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## Development server
