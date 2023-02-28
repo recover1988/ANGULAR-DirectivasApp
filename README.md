@@ -110,6 +110,33 @@ Con el `@Input()` podemos enviar a la directiva las propiedades que queremos mod
 
 el `error-msg` es la directiva y `color` es el valor que queremos que cambie, tambien se puede poner `[color]` y en este caso se enviaria la referencia del componente y no el valor propiamente dicho.
 
+## Input Setters
+
+Para que la directiva se actualize es mejor usar un setter que asocie la propiedad del Input con el valor a modificar en la directiva.
+
+```
+  @Input() set color(valor: string) {
+    this.htmlElement.nativeElement.style.color = valor;
+    this._color = valor;
+  };
+  @Input() set mensaje(valor: string) {
+    this.htmlElement.nativeElement.innerText = valor
+  }
+```
+
+Se puede crear funciones que modifique con la propiedad privada y quedaria
+
+```
+  @Input() set color(valor: string) {
+    this._color = valor;
+    this.setColor()
+  };
+  @Input() set mensaje(valor: string) {
+    this._mensaje = valor;
+    this.setMensaje()
+  }
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## Development server
