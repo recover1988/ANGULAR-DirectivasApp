@@ -137,6 +137,52 @@ Se puede crear funciones que modifique con la propiedad privada y quedaria
   }
 ```
 
+## Formas de Borrar un elemento HTML
+
+Primera: crear una clase CSS `hidden`(display:none) e implementarla con un setter:
+
+```
+  @Input() set valido(valor: boolean) {
+    if (!valor) {
+      this.htmlElement.nativeElement.classList.add('hidden')
+    }
+    this.htmlElement.nativeElement.classList.remove('hidden')
+  };
+
+```
+
+Segunda: inyectar en el constructor el `TemplateRef<HTMLElement>` y el `ViewContainerRef` y luego llamar el metodo `createEmbeddedView(this.templateRef)` y `clear()` para crear y borrar.
+
+```
+@Directive({
+  selector: '[customif]'
+})
+export class CustomIfDirective {
+
+  @Input() set customif(condicion: boolean) {
+    if (condicion) {
+      this.viewContainer.createEmbeddedView(this.templateRef)
+    } else {
+      this.viewContainer.clear()
+    }
+  }
+
+  constructor(
+    private templateRef: TemplateRef<HTMLElement>,
+    private viewContainer: ViewContainerRef
+  ) { }
+
+}
+```
+
+### Enviar todo el HtmlElement a la Directiva
+
+Pare enviar toda la referencia a la Directiva se usa el `*`
+
+```
+*customif="miFormulario.valid"
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
 
 ## Development server

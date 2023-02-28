@@ -11,7 +11,7 @@
     </div>
     <div class="col-auto">
       <span
-        *ngIf="tieneError('nombre')"
+        [valido]="tieneError('nombre')"
         error-msg
         [color]="color"
         [mensaje]="texto1"
@@ -36,3 +36,9 @@
 <br />
 <span class="badge text-bg-success">Value:</span>
 <pre>{{ miFormulario.value | json }}</pre>
+
+<div class="row mt-5" *customif="miFormulario.valid">
+  <div class="col">
+    <div class="alert alert-primary">Todo OK!</div>
+  </div>
+</div>
